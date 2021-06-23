@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState} from 'react';
+ function App() {
+  const [city,cityChange] = useState("")
+  const [weatherTable, weatherTableChange] = useState([])
+   return (
+      <div>
+        <input 
+        placeholder="City Name"
+        onChange={(e)=>{cityChange(e.target.value)}}
+        ></input>
+        <button onClick={() => {handleWeatherTable(weatherTableChange,city)}}></button>   
+        {(weatherTable.cod===200)? 
+        <p>{convertFromKelvinToCelsius(weatherTable.main.temp)}</p>: ""}
+      </div>
+  )
+}
+async function handleWeatherTable(weatherTableChange,city){
+  weatherTableChange(await fetch('https://floating-harbor-57133.herokuapp.com/api-connection?city='+city)
+  .then(res => res.json()))
+}
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+function convertFromKelvinToCelsius(degree){
+  return degree-273.15;
 }
 
 export default App;
