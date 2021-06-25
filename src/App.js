@@ -1,11 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { WeatherInformations } from './components/weather-Informations/informations-container.component';
 import { NearbyCitiesInformations } from './components/nearby-Cities/nearbyCities-container.component'
 import "./App.css"
 function App() {
   const [city, cityChange] = useState("")
+  const [errorMessage,errorMessageChange] = useState("")
   const [weatherTable, weatherTableChange] = useState([])
   const [weatherTableAboutAroundCties, WeatherAroundChange] = useState([])
+
+  useEffect(()=>{
+    errorMessageChange((weatherTable.cod !== 200)? weatherTable.message :"")
+  },[weatherTable])
   return (
     <div id="App">
       <input
@@ -13,7 +18,7 @@ function App() {
         onChange={(e) => { cityChange(e.target.value) }}
       ></input>
       <button
-        onClick={() => { handleWeatherTable(weatherTableChange, city) }
+        onClick={() => { handleWeatherTable(weatherTableChange, city)}
         }
         id="checkCityButton">Check Weather</button>
       <button
@@ -24,7 +29,7 @@ function App() {
         <WeatherInformations
           weatherTable={weatherTable}
         />
-        : ""}
+        : errorMessage}
         {console.log(weatherTableAboutAroundCties)}
       {
         (weatherTableAboutAroundCties.cod === "200") ?

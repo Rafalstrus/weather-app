@@ -6,7 +6,9 @@ export const WeatherInformations = props => {
     var sunset = new Date(weatherTable.sys.sunset * 1000)
     return (
         <div>
-            <p>{weatherTable.consolename}</p>
+            <h4>Country Info</h4>
+            <p>{weatherTable.sys.country}</p>
+            <p>{weatherTable.name}</p>
             <h3>Temperature</h3>
             <p>temperature :{(weatherTable.main.temp).toFixed(1)}°C</p>
             <p>feels like: {(weatherTable.main.feels_like).toFixed(1)}°C</p>
