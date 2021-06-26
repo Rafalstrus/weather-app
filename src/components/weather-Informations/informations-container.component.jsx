@@ -1,11 +1,12 @@
 import React from 'react';
+import "./weather-informations.styles.css"
 
 export const WeatherInformations = props => {
     var weatherTable = props.weatherTable
     var sunrise = new Date(weatherTable.sys.sunrise * 1000)
     var sunset = new Date(weatherTable.sys.sunset * 1000)
     return (
-        <div>
+        <div id="Informationa-about-City">
             <h4>Country Info</h4>
             <p>{weatherTable.sys.country}</p>
             <p>{weatherTable.name}</p>

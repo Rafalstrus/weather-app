@@ -1,4 +1,8 @@
 #App,body{
   margin-left: 200px;
+  margin-right: 200px;
   background-color: azure;
+}
+#App{
+  border: solid red;
 }
