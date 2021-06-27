@@ -1,6 +1,7 @@
 #App,body{
-  margin-left: 200px;
-  margin-right: 200px;
+margin:auto;
+min-width: 1000px;
+max-width: 1500px;
   background-color: azure;
 }
 #App{

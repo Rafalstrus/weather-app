@@ -3,16 +3,20 @@ import './next-Days.styles.css'
 
 export const ForecastCard = props => {
     return (
-        <div className="Forecast-Card">
+        <div className="forecast-Card">
+
+
             {// search for another funtion to getDate :)
             }
-                <p>{props.date.getDay() + " "+ props.date.getHours()}</p>
+            <p>{props.date.getHours() + ":" +
+                props.date.getMinutes() + "0" +
+                " " + props.date.toLocaleDateString()}</p>
 
-                <p>{props.temp}</p>
+            <p>{props.temp}</p>
 
-                <p>{props.weatherName}</p>
+            <p>{props.weatherName}</p>
 
-                <p>{props.weatherDescription}</p>
+            <p>{props.weatherDescription}</p>
         </div>
     )
 }

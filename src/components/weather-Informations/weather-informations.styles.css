@@ -1,3 +1,5 @@
 #Informationa-about-City{
     border: solid blue;
+    min-width: 200px;
+    max-width: 300px;
 }

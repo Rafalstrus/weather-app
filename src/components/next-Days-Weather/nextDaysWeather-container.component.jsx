@@ -4,7 +4,7 @@ import './next-Days.styles.css'
 
 export const Forecast = props => {
     return (
-        <div id="Forecast-container">
+        <div id="forecast-Container">
             {props.forecastTable.list.map((data) => {
                 var date = new Date(data.dt * 1000)
                 if(date.getHours() === 14){

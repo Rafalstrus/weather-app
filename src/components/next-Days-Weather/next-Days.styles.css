@@ -1,3 +1,9 @@
-#Forecast-container{
-    display:grid
+#forecast-Container{
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap:0px;
+}
+.forecast-Card{
+    text-align: center;
+    border: solid green;
 }
