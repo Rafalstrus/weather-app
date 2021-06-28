@@ -1,0 +1,9 @@
+#nearby-Cities-Container{
+    display: grid;
+    grid-column: span 2;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
+
+.nearby-Cities-Card{
+    border: solid pink;
+}

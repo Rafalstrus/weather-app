@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { WeatherInformations } from './components/weather-Informations/informations-container.component';
-import { NearbyCitiesInformations } from './components/nearby-Cities/nearbyCities-container.component'
+import { WeatherInformations } from './components/weather-Informations/informations-Container.component';
+import { NearbyCitiesInformations } from './components/nearby-Cities/nearby-Cities-Container.component'
 import { Forecast } from './components/next-Days-Weather/next-Days-Weather-container.component'
 import { NextHours } from './components/next-Hours/next-Hours-container.component'
 import "./App.css"
@@ -51,6 +51,7 @@ function App() {
           (weatherTableAboutAroundCties.cod === "200") ?
             <NearbyCitiesInformations
               weatherTableAboutAroundCties={weatherTableAboutAroundCties}
+              cityName = {weatherTable.name}
             />
             : ""}
       </div>
