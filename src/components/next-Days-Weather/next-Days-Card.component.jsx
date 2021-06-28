@@ -9,11 +9,14 @@ export const ForecastCard = props => {
                 props.date.getMinutes() + "0"
             }</p>
 
-            <p>{props.temp}</p>
+            <p>{"temp: "+props.temp +"°C"}</p>
 
             <p>{props.weatherName}</p>
 
             <p>{props.weatherDescription}</p>
-        </div>
+            <img src={"http://openweathermap.org/img/wn/"+props.icon+".png"}alt=""></img>
+        
+        
+</div>
     )
 }

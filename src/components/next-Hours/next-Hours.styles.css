@@ -1,8 +1,16 @@
 #next-Hours-Container{
-    display: grid;
     grid-column: span 2;
+}
+
+#next-Hours-Cards-Container{
+    display: grid;
+
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
 }
 .next-Hours-Card{
-    border: solid yellow;
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.1);
+    border-radius: 10px;
+    text-align: center;
+    margin: 10px;
+    background-color: white;
 }

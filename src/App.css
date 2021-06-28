@@ -1,14 +1,19 @@
 #App,body{
 margin:auto;
-min-width: 1000px;
+min-width: 600px;
 max-width: 1500px;
   background-color: azure;
 }
 #App{
-  border: solid red;
+  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.1);
+  padding: 10px;
+  border-radius: 10px;
 }
 #weather-Today-Container{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   grid-gap:0px;
+}
+h2{
+  text-align: center;
 }

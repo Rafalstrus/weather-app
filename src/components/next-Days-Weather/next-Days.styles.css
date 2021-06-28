@@ -1,9 +1,11 @@
 #forecast-Container{
     display:grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    grid-gap:0px;
 }
 .forecast-Card{
+    box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.1);
     text-align: center;
-    border: solid green;
+    border-radius: 10px;
+    margin: 10px;
+    background-color: white;
 }

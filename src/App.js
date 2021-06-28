@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
 import { WeatherInformations } from './components/weather-Informations/informations-Container.component';
 import { NearbyCitiesInformations } from './components/nearby-Cities/nearby-Cities-Container.component'
 import { Forecast } from './components/next-Days-Weather/next-Days-Weather-container.component'
 import { NextHours } from './components/next-Hours/next-Hours-container.component'
+import { SearchBox } from './components/search-Box/search-Box.component'
 import "./App.css"
 function App() {
   const [city, cityChange] = useState("")
@@ -14,6 +16,7 @@ function App() {
   useEffect(() => {
     if (weatherTable.cod !== 200) {
       errorMessageChange(weatherTable.message)
+      weatherAroundChange("")
     }
     else {
       handleWeatherAround(weatherAroundChange, weatherTable.coord.lat, weatherTable.coord.lon)
@@ -23,17 +26,14 @@ function App() {
 
   return (
     <div id="App">
-      <input
-        placeholder="City Name"
-        onChange={(e) => { cityChange(e.target.value) }}
-      ></input>
-      <button
-        onClick={() => {
-          handleWeatherTable(weatherTableChange, city)
-          handleForecastTable(forecastTableChange, city)
-        }
-        }
-        id="checkCityButton">Check Weather</button>
+      <SearchBox
+        cityChange={cityChange}
+        weatherTableChange={weatherTableChange}
+        forecastTableChange={forecastTableChange}
+        handleWeatherTable={handleWeatherTable}
+        handleForecastTable={handleForecastTable}
+        city={city}
+      />
       <div id="weather-Today-Container">
         {
           (weatherTable.cod === 200) ?
@@ -51,15 +51,18 @@ function App() {
           (weatherTableAboutAroundCties.cod === "200") ?
             <NearbyCitiesInformations
               weatherTableAboutAroundCties={weatherTableAboutAroundCties}
-              cityName = {weatherTable.name}
+              cityName={weatherTable.name}
             />
             : ""}
       </div>
       {
         (forecastTable.cod === "200") ?
-          <Forecast
-            forecastTable={forecastTable}
-          />
+          <div>
+            <h2>Daily Forecast</h2>
+            <Forecast
+              forecastTable={forecastTable}
+            />
+          </div>
           : ""}
     </div>
   )
@@ -75,7 +78,8 @@ async function handleWeatherAround(weatherAroundChange, lat, lon) {
 async function handleForecastTable(forecastTableChange, city) {
   forecastTableChange(await fetch('https://floating-harbor-57133.herokuapp.com/api-connection/forecast?city=' + city)
     .then(res => res.json()))
-}
+//tu bedzie loading sie zmienial na false
+  }
 
 
 document.addEventListener("keyup", function (event) {
@@ -86,3 +90,15 @@ document.addEventListener("keyup", function (event) {
 });
 
 export default App;
+
+
+/*
+things to do:
+add loading screen after click button
+change input and button styles
+something is wrong with current weather container with look
+change grid elements titles to nom h element
+add button click animation
+after mouse hover under element add some scale
+
+*/

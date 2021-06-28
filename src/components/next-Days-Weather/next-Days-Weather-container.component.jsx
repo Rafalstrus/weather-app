@@ -9,14 +9,16 @@ export const Forecast = props => {
                 var date = new Date(data.dt * 1000)
                 if(date.getHours() === 14){
                     return(
-                        <ForecastCard
+                        <ForecastCard key={data.dt}
                         date = {date}
                         temp = {data.main.temp}
                         weatherName = {data.weather[0].main}
                         weatherDescription = {data.weather[0].description}
+                        icon = {data.weather[0].icon}
                         />
                     )
                 }
+                return null
             })}
         </div>
     )
