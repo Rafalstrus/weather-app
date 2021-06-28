@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { WeatherInformations } from './components/weather-Informations/informations-container.component';
 import { NearbyCitiesInformations } from './components/nearby-Cities/nearbyCities-container.component'
-import { Forecast } from './components/next-Days-Weather/nextDaysWeather-container.component'
+import { Forecast } from './components/next-Days-Weather/next-Days-Weather-container.component'
 import { NextHours } from './components/next-Hours/next-Hours-container.component'
 import "./App.css"
 function App() {
@@ -12,8 +12,15 @@ function App() {
   const [forecastTable, forecastTableChange] = useState([])
 
   useEffect(() => {
-    errorMessageChange((weatherTable.cod !== 200) ? weatherTable.message : "")
+    if (weatherTable.cod !== 200) {
+      errorMessageChange(weatherTable.message)
+    }
+    else {
+      handleWeatherAround(weatherAroundChange, weatherTable.coord.lat, weatherTable.coord.lon)
+    }
   }, [weatherTable])
+
+
   return (
     <div id="App">
       <input
@@ -27,32 +34,29 @@ function App() {
         }
         }
         id="checkCityButton">Check Weather</button>
-      <button
-        onClick={() => ((weatherTable.cod === 200) ?
-          handleWeatherAround(weatherAroundChange, weatherTable.coord.lat, weatherTable.coord.lon) : "")}
-      >Around Cities</button>
-
-      {
-        (weatherTable.cod === 200) ?
-          <WeatherInformations
-            weatherTable={weatherTable}
-          />
-          : errorMessage}
-      {
-        (weatherTableAboutAroundCties.cod === "200") ?
-          <NearbyCitiesInformations
-            weatherTableAboutAroundCties={weatherTableAboutAroundCties}
-          />
-          : ""}
+      <div id="weather-Today-Container">
+        {
+          (weatherTable.cod === 200) ?
+            <WeatherInformations
+              weatherTable={weatherTable}
+            />
+            : errorMessage}
+        {
+          (forecastTable.cod === "200") ?
+            <NextHours
+              forecastTable={forecastTable}
+            />
+            : ""}
+        {
+          (weatherTableAboutAroundCties.cod === "200") ?
+            <NearbyCitiesInformations
+              weatherTableAboutAroundCties={weatherTableAboutAroundCties}
+            />
+            : ""}
+      </div>
       {
         (forecastTable.cod === "200") ?
           <Forecast
-            forecastTable={forecastTable}
-          />
-          : ""}
-      {
-        (forecastTable.cod === "200") ?
-          <NextHours
             forecastTable={forecastTable}
           />
           : ""}

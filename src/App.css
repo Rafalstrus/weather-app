@@ -7,3 +7,8 @@ max-width: 1500px;
 #App{
   border: solid red;
 }
+#weather-Today-Container{
+  display:grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-gap:0px;
+}

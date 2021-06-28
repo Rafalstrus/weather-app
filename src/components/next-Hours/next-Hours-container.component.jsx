@@ -1,18 +1,22 @@
 import React from 'react';
 
+import {NextHoursCard} from './next-Hours-Card.component'
+import './next-Hours.styles.css'
+
 export const NextHours = props => {
     return (
-        <div>
-            {}
-            {/*props.forecastTable.list.map((data) => {
+        <div id="next-Hours-Container">
+            {props.forecastTable.list.map((data, index) => {
                 var date = new Date(data.dt * 1000)
-                if(date.getDay() === 14){
-                console.log(date)
-                console.log(data.main.temp)
-                console.log(data.weather[0].main)
-                console.log(data.weather[0].description)
+                if(index<6){
+                    return(
+                    <NextHoursCard
+                        date = {date}
+                        data = {data}
+                    />
+                    )
                 }
-            })*/}
+            })}
         </div>
     )
 }
