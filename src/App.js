@@ -85,7 +85,7 @@ async function handleForecastTable(forecastTableChange, city) {
 document.addEventListener("keyup", function (event) {
   if (event.keyCode === 13) {
     event.preventDefault();
-    document.getElementById("checkCityButton").click();
+    document.getElementById("city-Name-Button").click();
   }
 });
 

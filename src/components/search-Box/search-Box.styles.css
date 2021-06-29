@@ -8,11 +8,15 @@
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.1);
 }
 #city-Name-Button{
+    font-weight: bold;
     margin: 12px;
     padding: 5px;
     height: 40px;
-    background-color: rgb(70, 196, 196);
+    background-color: rgb(100, 228, 228);
     border: none;
     border-radius: 0px;
     box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.1);
+}
+#city-Name-Button:active{
+    background-color: rgb(70, 196, 196);
 }

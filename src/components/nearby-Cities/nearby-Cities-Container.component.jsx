@@ -12,7 +12,6 @@ export const NearbyCitiesInformations = props => {
         <div id="nearby-Cities-Cards-Container">
             {props.weatherTableAboutAroundCties.list.map((data) => {
                 var date = new Date(data.dt * 1000)
-                console.log(data.name,props.cityName)
                 if (data.name !== props.cityName && counter <= 5) {
                     counter = counter + 1
                     return (

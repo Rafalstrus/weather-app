@@ -17,3 +17,17 @@ max-width: 1500px;
 h2{
   text-align: center;
 }
+.temperature{
+  text-decoration: underline;
+}
+.date,.city-Name,.next-Hours{
+  font-weight: bold;
+}
+.weather-Type{
+  text-shadow: 1px 1px green;
+
+}
+.weather-Img{
+  width: 60px;
+  height: 60px;
+}
