@@ -52,6 +52,7 @@ function App() {
             <NearbyCitiesInformations
               weatherTableAboutAroundCties={weatherTableAboutAroundCties}
               cityName={weatherTable.name}
+              timezone={weatherTable.timezone}
             />
             : ""}
       </div>
@@ -95,10 +96,6 @@ export default App;
 /*
 things to do:
 add loading screen after click button
-change input and button styles
-something is wrong with current weather container with look
-change grid elements titles to nom h element
-add button click animation
 after mouse hover under element add some scale
 
 */

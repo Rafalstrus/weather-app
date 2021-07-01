@@ -3,8 +3,8 @@ import "./weather-informations.styles.css"
 
 export const WeatherInformations = props => {
     var weatherTable = props.weatherTable
-    var sunrise = new Date(weatherTable.sys.sunrise * 1000)
-    var sunset = new Date(weatherTable.sys.sunset * 1000)
+    var sunrise = new Date((weatherTable.sys.sunrise+weatherTable.timezone-(new Date().getTimezoneOffset() /-60)*3600) * 1000)
+    var sunset = new Date((weatherTable.sys.sunset+weatherTable.timezone-(new Date().getTimezoneOffset() /-60)*3600) * 1000)
     return (
         <div>
             <h2>Current Weather</h2>

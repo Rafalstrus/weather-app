@@ -8,3 +8,6 @@
     text-align: center;
     padding-bottom: 20px;
 }
+#Informationa-about-City:hover{
+    transform: scale(1.05);
+}

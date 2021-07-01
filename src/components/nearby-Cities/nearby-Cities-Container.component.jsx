@@ -9,21 +9,21 @@ export const NearbyCitiesInformations = props => {
     return (
         <div id="nearby-Cities-Container">
             <h2>Nearby Cities:</h2>
-        <div id="nearby-Cities-Cards-Container">
-            {props.weatherTableAboutAroundCties.list.map((data) => {
-                var date = new Date(data.dt * 1000)
-                if (data.name !== props.cityName && counter <= 5) {
-                    counter = counter + 1
-                    return (
-                        <NearbyCitiesCard key ={counter}
-                            data={data}
-                            date={date}
-                        />
-                    )
-                }
-                return null
-            })}
-        </div>
+            <div id="nearby-Cities-Cards-Container">
+                {props.weatherTableAboutAroundCties.list.map((data) => {
+                    var date = new Date((data.dt+props.timezone-(new Date().getTimezoneOffset() /-60)*3600)*1000)
+                    if (data.name !== props.cityName && counter <= 5) {
+                        counter = counter + 1
+                        return (
+                            <NearbyCitiesCard key={counter}
+                                data={data}
+                                date={date}
+                            />
+                        )
+                    }
+                    return null
+                })}
+            </div>
         </div>
     )
 }

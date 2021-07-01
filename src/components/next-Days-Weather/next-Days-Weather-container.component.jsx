@@ -6,7 +6,7 @@ export const Forecast = props => {
     return (
         <div id="forecast-Container">
             {props.forecastTable.list.map((data) => {
-                var date = new Date(data.dt * 1000)
+                var date = new Date((data.dt+props.forecastTable['city'].timezone-((new Date().getTimezoneOffset() /-60)*3600))*1000)
                 if(date.getHours() === 14){
                     return(
                         <ForecastCard key={data.dt}

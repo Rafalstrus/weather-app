@@ -14,3 +14,6 @@
     margin: 10px;
     background-color: white;
 }
+.next-Hours-Card:hover {
+    transform: scale(1.05);
+  }

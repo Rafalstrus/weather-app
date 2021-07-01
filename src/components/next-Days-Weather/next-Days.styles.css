@@ -9,3 +9,6 @@
     margin: 10px;
     background-color: white;
 }
+.forecast-Card:hover {
+    transform: scale(1.05);
+  }

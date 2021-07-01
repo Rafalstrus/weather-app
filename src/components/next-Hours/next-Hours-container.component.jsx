@@ -10,7 +10,8 @@ export const NextHours = props => {
             <h2>Next Hours Predicition</h2>
             <div id="next-Hours-Cards-Container">
             {props.forecastTable.list.map((data, index) => {
-                var date = new Date(data.dt * 1000)
+                var date = new Date((data.dt+props.forecastTable['city'].timezone-(new Date().getTimezoneOffset() /-60)*3600)*1000)
+                //console.log(new Date((data.dt*1000)+(+props.forecastTable['city'].timezone*1000)))
                 if(index<6){
                     return(
                     <NextHoursCard key={index}
