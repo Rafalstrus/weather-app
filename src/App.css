@@ -1,33 +1,40 @@
-#App,body{
-margin:auto;
-min-width: 600px;
-max-width: 1500px;
+#App, body {
+  margin: auto;
+  min-width: 600px;
+  max-width: 1500px;
   background-color: azure;
+  padding: 5px;
 }
-#App{
-  box-shadow: 5px 5px 5px 5px rgba(0,0,0,0.1);
+
+#App {
+  box-shadow: 5px 5px 5px 5px rgba(0, 0, 0, 0.1);
   padding: 10px;
   border-radius: 10px;
 }
-#weather-Today-Container{
-  display:grid;
+
+#weather-Today-Container {
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap:0px;
+  grid-gap: 0px;
 }
-h2{
+
+h2 {
   text-align: center;
 }
-.temperature{
+
+.temperature {
   text-decoration: underline;
 }
-.date,.city-Name,.next-Hours{
+
+.date, .city-Name, .next-Hours {
   font-weight: bold;
 }
-.weather-Type{
-  text-shadow: 1px 1px green;
 
+.weather-Type {
+  text-shadow: 1px 1px green;
 }
-.weather-Img{
+
+.weather-Img {
   width: 60px;
   height: 60px;
 }

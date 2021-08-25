@@ -5,14 +5,22 @@ import { NearbyCitiesInformations } from './components/nearby-Cities/nearby-Citi
 import { Forecast } from './components/next-Days-Weather/next-Days-Weather-container.component'
 import { NextHours } from './components/next-Hours/next-Hours-container.component'
 import { SearchBox } from './components/search-Box/search-Box.component'
+
 import "./App.css"
+import { Loading } from './components/loading-screen/loading';
+
 function App() {
   const [city, cityChange] = useState("")
   const [errorMessage, errorMessageChange] = useState("")
   const [weatherTable, weatherTableChange] = useState([])
   const [weatherTableAboutAroundCties, weatherAroundChange] = useState([])
   const [forecastTable, forecastTableChange] = useState([])
+  
+  const [loading, setLoading] = useState(false)
 
+  useEffect(() => {
+    handleWeatherTable(function(){return 0}, 'Warsaw')
+  },[])
   useEffect(() => {
     if (weatherTable.cod !== 200) {
       errorMessageChange(weatherTable.message)
@@ -32,8 +40,15 @@ function App() {
         forecastTableChange={forecastTableChange}
         handleWeatherTable={handleWeatherTable}
         handleForecastTable={handleForecastTable}
+
+        setLoading={setLoading}
         city={city}
       />
+      {(loading)? 
+      <Loading 
+      loading={loading}
+      />:
+      <div>
       <div id="weather-Today-Container">
         {
           (weatherTable.cod === 200) ?
@@ -65,6 +80,7 @@ function App() {
             />
           </div>
           : ""}
+          </div>}
     </div>
   )
 }
@@ -76,10 +92,10 @@ async function handleWeatherAround(weatherAroundChange, lat, lon) {
   weatherAroundChange(await fetch('https://floating-harbor-57133.herokuapp.com/api-connection/around?lat=' + lat + '&lon=' + lon)
     .then(res => res.json()))
 }
-async function handleForecastTable(forecastTableChange, city) {
+async function handleForecastTable(setLoading,forecastTableChange, city) {
   forecastTableChange(await fetch('https://floating-harbor-57133.herokuapp.com/api-connection/forecast?city=' + city)
     .then(res => res.json()))
-//tu bedzie loading sie zmienial na false
+    setTimeout(function(){ setLoading(false) }, 1500);
   }
 
 
