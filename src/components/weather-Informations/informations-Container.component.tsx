@@ -1,7 +1,7 @@
 import React from 'react';
 import "./weather-informations.styles.css"
 
-export const WeatherInformations = props => {
+export const WeatherInformations = (props: any) => {
     var weatherTable = props.weatherTable
     var sunrise = new Date((weatherTable.sys.sunrise+weatherTable.timezone-(new Date().getTimezoneOffset() /-60)*3600) * 1000)
     var sunset = new Date((weatherTable.sys.sunset+weatherTable.timezone-(new Date().getTimezoneOffset() /-60)*3600) * 1000)

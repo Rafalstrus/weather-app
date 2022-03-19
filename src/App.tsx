@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
 import { WeatherInformations } from './components/weather-Informations/informations-Container.component';
 import { NearbyCitiesInformations } from './components/nearby-Cities/nearby-Cities-Container.component'
@@ -10,27 +10,26 @@ import "./App.css"
 import { Loading } from './components/loading-screen/loading';
 
 function App() {
-  const [city, cityChange] = useState("")
-  const [errorMessage, errorMessageChange] = useState("")
-  const [weatherTable, weatherTableChange] = useState([])
-  const [weatherTableAboutAroundCties, weatherAroundChange] = useState([])
-  const [forecastTable, forecastTableChange] = useState([])
-  
-  const [loading, setLoading] = useState(false)
+  const [city, cityChange] = React.useState<string>("")
+  const [errorMessage, errorMessageChange] = React.useState<string>("")
+  const [weatherTable, weatherTableChange] = React.useState<any>([])
+  const [weatherTableAboutAroundCties, weatherAroundChange] = React.useState<any>([])
+  const [forecastTable, forecastTableChange] = React.useState<any>([])
+  const [loading, setLoading] = React.useState<boolean>(false)
 
-  useEffect(() => {
+  React.useEffect(() => {
     handleWeatherTable(function(){return 0}, 'Warsaw')
   },[])
-  useEffect(() => {
+
+  React.useEffect(() => {
     if (weatherTable.cod !== 200) {
       errorMessageChange(weatherTable.message)
-      weatherAroundChange("")
+      weatherAroundChange([])
     }
     else {
       handleWeatherAround(weatherAroundChange, weatherTable.coord.lat, weatherTable.coord.lon)
     }
   }, [weatherTable])
-
 
   return (
     <div id="App">
@@ -61,7 +60,7 @@ function App() {
             <NextHours
               forecastTable={forecastTable}
             />
-            : ""}
+            : null}
         {
           (weatherTableAboutAroundCties.cod === "200") ?
             <NearbyCitiesInformations
@@ -69,7 +68,7 @@ function App() {
               cityName={weatherTable.name}
               timezone={weatherTable.timezone}
             />
-            : ""}
+            : null}
       </div>
       {
         (forecastTable.cod === "200") ?
@@ -79,20 +78,20 @@ function App() {
               forecastTable={forecastTable}
             />
           </div>
-          : ""}
+          : null}
           </div>}
     </div>
   )
 }
-async function handleWeatherTable(weatherTableChange, city) {
+async function handleWeatherTable(weatherTableChange: any, city: string) {
   weatherTableChange(await fetch('https://floating-harbor-57133.herokuapp.com/api-connection?city=' + city)
     .then(res => res.json()))
 }
-async function handleWeatherAround(weatherAroundChange, lat, lon) {
+async function handleWeatherAround(weatherAroundChange: any, lat: number, lon: number) {
   weatherAroundChange(await fetch('https://floating-harbor-57133.herokuapp.com/api-connection/around?lat=' + lat + '&lon=' + lon)
     .then(res => res.json()))
 }
-async function handleForecastTable(setLoading,forecastTableChange, city) {
+async function handleForecastTable(setLoading: any, forecastTableChange: any, city: string) {
   forecastTableChange(await fetch('https://floating-harbor-57133.herokuapp.com/api-connection/forecast?city=' + city)
     .then(res => res.json()))
     setTimeout(function(){ setLoading(false) }, 1500);
@@ -100,9 +99,9 @@ async function handleForecastTable(setLoading,forecastTableChange, city) {
 
 
 document.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
+  if (event.key === 'Enter') {
     event.preventDefault();
-    document.getElementById("city-Name-Button").click();
+    document.getElementById("city-Name-Button")!.click();
   }
 });
 

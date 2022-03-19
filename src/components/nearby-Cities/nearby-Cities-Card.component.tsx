@@ -1,7 +1,7 @@
 import React from 'react';
 
 import "./nearby-Cities.styles.css"
-export const NearbyCitiesCard = props => (
+export const NearbyCitiesCard = (props: any) => (
         <div className="nearby-Cities-Card">
             <p className="city-Name">{props.data.name}</p>
                     <p>{(props.date.getHours() + ":" + 

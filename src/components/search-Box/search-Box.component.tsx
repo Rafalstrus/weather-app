@@ -2,8 +2,9 @@ import { useRef } from 'react';
 
 import './search-Box.styles.css'
 
-export const SearchBox = props => {
-    const inputRef = useRef(null)
+export const SearchBox = (props: any) => {
+    const inputRef = useRef<HTMLInputElement>(null)
+    
     return (
         <div id="search-Box">
             <input
